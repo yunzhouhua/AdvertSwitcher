@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yunzhou.advertswitcher.MainActivity"
+    tools:context=".MainActivity"
     android:orientation="vertical">
 
     <Button
@@ -14,9 +14,9 @@
         android:text="刷新"
         android:onClick="refresh"/>
 
-    <views.AdvertSwitcher
+    <com.yunzhou.advertswitcher.AdvertSwitcher
         android:id="@+id/advert_switcher"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="20dp" />
 
 </LinearLayout>
