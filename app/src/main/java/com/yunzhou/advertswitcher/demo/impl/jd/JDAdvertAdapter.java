@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yunzhou.advertswitcher.IAdvertAdapter;
-import com.yunzhou.advertswitcher.R;
+import com.yunzhou.advertswitcher.demo.R;
 
 import java.util.List;
 

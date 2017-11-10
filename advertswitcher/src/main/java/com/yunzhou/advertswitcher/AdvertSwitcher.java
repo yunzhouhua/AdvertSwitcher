@@ -129,7 +129,7 @@ public class AdvertSwitcher extends ViewSwitcher implements ViewSwitcher.ViewFac
         return mAdapter;
     }
 
-    public void setmAdapter(IAdvertAdapter mAdapter) {
+    public void setAdapter(IAdvertAdapter mAdapter) {
         this.mAdapter = mAdapter;
     }
 
