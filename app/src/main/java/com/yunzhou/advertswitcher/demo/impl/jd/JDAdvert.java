@@ -1,4 +1,4 @@
-package com.yunzhou.advertswitcher.impl.jd;
+package com.yunzhou.advertswitcher.demo.impl.jd;
 
 /**
  * Created by huayunzhou on 2017/11/9.
@@ -42,5 +42,13 @@ public class JDAdvert {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "JDAdvert{" +
+                "tag='" + tag + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

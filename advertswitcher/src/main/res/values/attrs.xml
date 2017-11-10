@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AdvertSwitcher">
+        <!-- 时间间隔 -->
+        <attr name="timeSpan" format="integer" />
+        <!-- 进入动画 -->
+        <attr name="inAnim" format="reference" />
+        <!-- 离开动画 -->
+        <attr name="outAnim" format="reference" />
+        <!-- 动画插值器 -->
+        <attr name="interpolator" format="reference" />
+    </declare-styleable>
+</resources>

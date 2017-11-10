@@ -1,4 +1,4 @@
-package com.yunzhou.advertswitcher.impl.jd;
+package com.yunzhou.advertswitcher.demo.impl.jd;
 
 import android.content.Context;
 import android.text.TextUtils;

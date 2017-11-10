@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.yunzhou.advertswitcher.AdvertSwitcher;
-import com.yunzhou.advertswitcher.impl.jd.JDAdvert;
-import com.yunzhou.advertswitcher.impl.jd.JDAdvertAdapter;
+import com.yunzhou.advertswitcher.demo.impl.jd.JDAdvert;
+import com.yunzhou.advertswitcher.demo.impl.jd.JDAdvertAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AdvertSwitcher mAdvertSwitcher = null;
 
+    List<JDAdvert> jdAdverts = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,16 +24,36 @@ public class MainActivity extends AppCompatActivity {
 
         mAdvertSwitcher = findViewById(R.id.advert_switcher);
 
-        List<JDAdvert> adverts = new ArrayList<>();
-        adverts.add(new JDAdvert("HOT", "1.双十一啦啦啦啦啦"));
-        adverts.add(new JDAdvert("爆", "2.双十一啦啦啦啦啦"));
-        adverts.add(new JDAdvert("爆", "3.双十一啦啦啦啦啦"));
-        adverts.add(new JDAdvert("HOT", "4.双十一啦啦啦啦啦"));
-        adverts.add(new JDAdvert("爆", "5.双十一啦啦啦啦啦"));
+        initForJD();
+    }
 
-        mAdvertSwitcher.setmAdapter(new JDAdvertAdapter(this, adverts));
+    private void initForJD() {
+        jdAdverts.add(new JDAdvert("HOT", "1.双十一啦啦啦啦啦"));
+        jdAdverts.add(new JDAdvert("爆", "2.双十一啦啦啦啦啦"));
+        jdAdverts.add(new JDAdvert("爆", "3.双十一啦啦啦啦啦"));
+        jdAdverts.add(new JDAdvert("HOT", "4.双十一啦啦啦啦啦"));
+        jdAdverts.add(new JDAdvert("爆", "5.双十一啦啦啦啦啦"));
+
+        mAdvertSwitcher.setmAdapter(new JDAdvertAdapter(this, jdAdverts));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdvertSwitcher.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mAdvertSwitcher.stop();
     }
 
     public void refresh(View view) {
+        jdAdverts.add(0, new JDAdvert("COLD", "PRE1.双十一啦啦啦啦啦"));
+        jdAdverts.add(0, new JDAdvert("COLD", "PRE2.双十一啦啦啦啦啦"));
+        jdAdverts.add(0, new JDAdvert("COLD", "PRE3.双十一啦啦啦啦啦"));
+        mAdvertSwitcher.refresh();
+
     }
 }
