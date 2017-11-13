@@ -30,7 +30,7 @@ public class AdvertSwitcher extends ViewSwitcher implements ViewSwitcher.ViewFac
     private static final int DEFAULT_TIME_SPAN = 3000;
     private static final int DEFAULT_IN_ANIM_ID = R.anim.advert_scroll_in;
     private static final int DEFAULT_OUT_ANIM_ID = R.anim.advert_scroll_out;
-    private static final int DEFAULT_INTERPOLATOR = android.R.interpolator.accelerate_cubic;
+    private static final int DEFAULT_INTERPOLATOR = android.R.interpolator.linear;
 
     private Context mContext;
     /**
@@ -84,8 +84,8 @@ public class AdvertSwitcher extends ViewSwitcher implements ViewSwitcher.ViewFac
         mHandler = new ScrollHandler();
         Animation inAnim = AnimationUtils.loadAnimation(mContext, mInAnimId);
         Animation outAnim = AnimationUtils.loadAnimation(mContext, mOutAnimId);
-//        inAnim.setInterpolator(mContext, interpolator);
-//        outAnim.setInterpolator(mContext, interpolator);
+        inAnim.setInterpolator(mContext, interpolator);
+        outAnim.setInterpolator(mContext, interpolator);
         //设置View进入离开动画
         setInAnimation(inAnim);
         setOutAnimation(outAnim);
@@ -96,6 +96,7 @@ public class AdvertSwitcher extends ViewSwitcher implements ViewSwitcher.ViewFac
      * 建议在onResume中调用
      */
     public void start(){
+        //确保setFactory只在无子View的时候调用
         if(getChildCount() == 0) {
             setFactory(this);
         }
@@ -131,15 +132,6 @@ public class AdvertSwitcher extends ViewSwitcher implements ViewSwitcher.ViewFac
 
     public void setAdapter(IAdvertAdapter mAdapter) {
         this.mAdapter = mAdapter;
-    }
-
-    /**
-     * 重新置位
-     */
-    public void reset(){
-        mHandler.removeMessages(FLAG_START_SCROLL);
-        currentIndex = 0;
-        removeAllViews();
     }
 
     private class ScrollHandler extends Handler {
